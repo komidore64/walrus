@@ -1,0 +1,3 @@
+[submodule "overviewer"]
+	path = overviewer
+	url = https://github.com/overviewer/Minecraft-Overviewer.git

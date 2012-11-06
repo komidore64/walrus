@@ -1,0 +1,2 @@
+30 0 * * * /home/minecraft/world-backup.sh
+0 * * * * /home/minecraft/force-save.sh; sleep 10; /home/minecraft/update-overviewer.sh; 

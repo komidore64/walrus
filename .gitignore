@@ -1,0 +1,4 @@
+*.log
+backups/*.zip
+srv/*
+!/srv/.gitkeep
