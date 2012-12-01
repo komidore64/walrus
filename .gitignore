@@ -1,4 +1,4 @@
 *.log
 backups/*.zip
-srv/*
-!/srv/.gitkeep
+lib/*
+!/lib/.gitkeep

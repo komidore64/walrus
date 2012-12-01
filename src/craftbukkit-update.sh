@@ -2,7 +2,7 @@
 
 crafty_log=/home/minecraft/craftbukkit-update.log
 
-echo -n "$(date +%c) - checking for latest craftbukkit jar..." | tee -a $crafty_log
+echo -n "$(date +%c) - checking for latest jar..." | tee -a $crafty_log
 
 # permanent craftbukkit download link
 download_link="http://dl.bukkit.org/downloads/craftbukkit/get/latest-rb/craftbukkit.jar"
