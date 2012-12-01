@@ -1,0 +1,10 @@
+# walrus.yml
+
+# location of this walrus instance
+walrus_dir: '/home/komidore64/workspace/walrus'
+
+# permanent download link to get the latest craftbukkit jar
+craftbukkit_dl_link: 'http://dl.bukkit.org/downloads/craftbukkit/get/latest-rb/craftbukkit.jar'
+
+# should walrus automatically update the craftbukkit jar?
+autoupdate_jar: true
