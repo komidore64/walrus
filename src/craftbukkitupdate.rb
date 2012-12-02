@@ -1,48 +1,50 @@
 #!/usr/bin/env ruby
 
 # TODO make this work!
+$stdout.sync = true
 
 require 'net/http'
 
-perm_uri = URI("http://dl.bukkit.org/downloads/craftbukkit/get/latest-rb/craftbukkit.jar") # put url into a configurable variable
+PROGRAM_LOCATION = File.dirname(__FILE__)
+
+exit if `#{PROGRAM_LOCATION}/configreader.rb find autoupdate_jar` == 'false'
+
+craftbukkit_location = Dir.new("#{PROGRAM_LOCATION}/../lib")
+
+print "downloading craftbukkit jar meta-data..."
+perm_uri = URI(`#{PROGRAM_LOCATION}/configreader.rb find craftbukkit_dl_link`)
 
 session = Net::HTTP.new(perm_uri.host)
 request = Net::HTTP::Get.new(perm_uri.request_uri)
 
 response = session.request(request)
 data = {:url => response["Location"], :filename => response["Location"].split("/").last}
-latest_jar = data[:filename]
+puts "DONE"
 
-# get the current jar name, or an empty string if jar does not exist
-current_jar = @crafty_dir.entries.grep(/^craftbukkit-.*\.jar/).first || ""
+current_jar_fname = craftbukkit_location.entries.grep(/^craftbukkit-.*\.jar/).first || ""
 
-if (latest_jar <=> current_jar) > 0 # string comparison
-  print "#{(current_jar == "") ? "downloading" : "updating"} craftbukkit jar..."
+if (data[:filename] <=> current_jar_fname) > 0 # string comparison
+  print "#{(current_jar_fname.empty?) ? "downloading" : "updating"} craftbukkit jar..."
 
-  craftbukkit_jar_path = [@crafty_dir.path, current_jar].join("/")
-  File.delete(craftbukkit_jar_path) unless current_jar == ""
+  unless current_jar_fname.empty?
+    craftbukkit_jar_path = [craftbukkit_location.path, current_jar_fname].join("/")
+    File.delete(craftbukkit_jar_path)
+  end
 
-  data = {}
+  download_uri = URI(data[:url])
 
-  dl_info = get_direct_dl_info()
-
-  data[:filename] = dl_info[:filename]
-  dl_uri = URI(dl_info[:url])
-
-  session = Net::HTTP.new(dl_uri.host)
-  request = Net::HTTP::Get.new(dl_uri.request_uri)
+  session = Net::HTTP.new(download_uri.host)
+  request = Net::HTTP::Get.new(download_uri.request_uri)
 
   response = session.request(request)
 
   data[:bin] = response.body
 
-  craftbukkit_jar_path = [@crafty_dir.path, data[:filename]].join("/")
+  craftbukkit_jar_path = [craftbukkit_location.path, data[:filename]].join("/")
   f = File.open(craftbukkit_jar_path, "wb")
   f.write(data[:bin])
   f.close
   puts "DONE"
-  return true
+else
+  puts "craftbukkit jar is already up-to-date"
 end
-return false
-
-
