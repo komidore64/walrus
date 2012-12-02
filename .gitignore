@@ -2,3 +2,6 @@
 backups/*.zip
 lib/*
 !/lib/.gitkeep
+
+# mac shenanigans
+.DS_Store
