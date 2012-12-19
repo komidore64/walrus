@@ -1,13 +1,15 @@
 #!/usr/bin/env ruby
 
-# TODO make this work!
 $stdout.sync = true
 
 require 'net/http'
 
-PROGRAM_LOCATION = File.dirname(__FILE__)
+PROGRAM_LOCATION = File.expand_path(File.dirname(__FILE__))
 
-exit if `#{PROGRAM_LOCATION}/configreader.rb find autoupdate_jar` == 'false'
+if `#{PROGRAM_LOCATION}/configreader.rb find autoupdate_jar` == 'false'
+  puts "Configuration has jar auto-updating set to 'false'"
+  exit
+end
 
 craftbukkit_location = Dir.new("#{PROGRAM_LOCATION}/../lib")
 
@@ -45,6 +47,7 @@ if (data[:filename] <=> current_jar_fname) > 0 # string comparison
   f.write(data[:bin])
   f.close
   puts "DONE"
+  puts "wrote #{File.expand_path(craftbukkit_jar_path)}"
 else
   puts "craftbukkit jar is already up-to-date"
 end
