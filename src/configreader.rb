@@ -4,11 +4,11 @@ require 'yaml'
 
 PROGRAM_NAME = File.basename($PROGRAM_NAME)
 
-PROGRAM_LOCATION = File.dirname(__FILE__)
+PROGRAM_LOCATION = File.expand_path(File.dirname(__FILE__))
 
 command = ARGV.shift
 
-config = YAML.load(File.open("#{PROGRAM_LOCATION}/../config/walrus.yml"))
+config = YAML.load(File.open(File.expand_path("#{PROGRAM_LOCATION}/../config/walrus.yml")))
 
 case command
 when 'list'
@@ -19,10 +19,14 @@ when 'find'
     puts config[property]
   else
     puts "property not found"
+    exit 1
   end
 else
   puts "unknown command"
   puts
   puts "USAGE: #{PROGRAM_NAME} list|(find <property>)"
   puts
+  exit 1
 end
+
+exit 0
