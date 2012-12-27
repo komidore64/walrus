@@ -8,3 +8,6 @@ craftbukkit_dl_link: 'http://dl.bukkit.org/downloads/craftbukkit/get/latest-rb/c
 
 # should walrus automatically update the craftbukkit jar?
 autoupdate_jar: true
+
+# should walrus automatically create backups of the world?
+autobackup: true

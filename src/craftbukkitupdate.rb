@@ -6,8 +6,11 @@ require 'net/http'
 
 PROGRAM_LOCATION = File.expand_path(File.dirname(__FILE__))
 
-if `#{PROGRAM_LOCATION}/configreader.rb find autoupdate_jar` == 'false'
-  puts "Configuration has jar auto-updating set to 'false'"
+config_option = 'autoupdate_jar'
+
+if `#{PROGRAM_LOCATION}/configreader.rb find #{config_option}` == 'false'
+  puts "Configuration has [ #{config_option} ] set to 'false'"
+  puts "exiting..."
   exit
 end
 
