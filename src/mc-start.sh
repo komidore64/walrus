@@ -1,7 +1,7 @@
 #!/bin/bash
-craftbukkit_location=/home/minecraft/srv/
+craftbukkit_location=../lib/
 
-~/craftbukkit-update.sh
+~/craftbukkitupdate.rb
 
-cd $craftbukkit_location;
-java -Xmx4G -Xms2G -jar $(find . -name craftbukkit*.jar) nogui
+pushd $craftbukkit_location;
+java -Xmx4G -Xms2G -jar $(find . -name craftbukkit*.jar) nogui --nojline

@@ -1,15 +1,17 @@
 #!/usr/bin/env ruby
 
+PROGRAM_NAME = File.basename($PROGRAM_NAME)
+PROGRAM_LOCATION = File.expand_path(File.dirname(__FILE__))
+
+PROPERTIES_FILE = "#{PROGRAM_LOCATION}/../lib/server.properties"
+
 def help str
   puts str if str
   puts
-  puts "Usage: readproperties.rb (list|find <key>)"
+  puts "USAGE: #{PROGRAM_NAME} list|(find <property>)"
   puts
   exit 1
 end
-
-PROGRAM_LOCATION = File.expand_path(File.dirname(__FILE__))
-PROPERTIES_FILE = File.expand_path([PROGRAM_LOCATION, "..", "lib", "server.properties"].join('/'))
 
 properties = {}
 
@@ -25,13 +27,17 @@ command = ARGV.shift
 
 case command
 when "list"
-  properties.each do |k, v|
-    puts "#{k}: #{v}"
-  end
+  properties.each {|k, v| puts "#{k}: #{v}"}
 when "find"
-  search_key = ARGV.shift
-  help("No key to look for") if search_key.nil?
-  puts properties[search_key]
+  key = ARGV.shift
+  help("no property given") if key.nil?
+  if properties.include?(key)
+    puts properties[key]
+  else
+    help("property [ #{key} ] not found")
+  end
+when nil
+  help("no command given")
 else
-  help("No command given")
+  help("unknown command [ #{command} ]")
 end
