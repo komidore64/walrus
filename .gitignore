@@ -1,7 +1,7 @@
 *.log
 backups/*.zip
 lib/*
-!/lib/.gitkeep
+config/walrus.yml
 
 # mac shenanigans
 .DS_Store

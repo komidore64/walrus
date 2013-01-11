@@ -25,4 +25,4 @@ craftbukkit_starting_memory: 1024
 # should be set above starting memory
 #
 # recommended: 2048 megabytes
-craftbukkit_maximum_memory: 4096
+craftbukkit_maximum_memory: 2048
