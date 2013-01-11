@@ -10,4 +10,9 @@
 # Author: komidore64@gmail.com
 ### END INIT INFO
 
-su komidore64 -c '(cd ~/minecraft/; ./start.sh;)'
+SCRIPT_LOCATION="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" # bash hack to get the location of this script
+SOURCE_LOCATION=$SCRIPT_LOCATION/../src
+
+USER=$( $SOURCE_LOCATION/configreader.rb find walrus_user )
+
+su $USER -c "(cd $SOURCE_LOCATION; ./start.sh;)"

@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-PROGRAM_NAME = File.basename($PROGRAM_NAME)
+PROGRAM_NAME = File.basename(__FILE__)
 PROGRAM_LOCATION = File.expand_path(File.dirname(__FILE__))
 
 PROPERTIES_FILE = "#{PROGRAM_LOCATION}/../lib/server.properties"

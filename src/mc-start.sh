@@ -1,7 +1,13 @@
 #!/bin/bash
-craftbukkit_location=../lib/
 
-~/craftbukkitupdate.rb
+SCRIPT_LOCATION="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" # bash hack to get the location of this script
 
-pushd $craftbukkit_location;
-java -Xmx4G -Xms2G -jar $(find . -name craftbukkit*.jar) nogui --nojline
+CRAFTBUKKIT_LOCATION=$SCRIPT_LOCATION/../lib/
+
+$SCRIPT_LOCATION/craftbukkitupdate.rb
+
+MAX_MEM=$( $SCRIPT_LOCATION/configreader.rb find craftbukkit_maximum_memory )
+MIN_MEM=$( $SCRIPT_LOCATION/configreader.rb find craftbukkit_minimum_memory )
+
+pushd $CRAFTBUKKIT_LOCATION > /dev/null 2>&1
+java -Xmx$MAX_MEM -Xms$MIN_MEM -jar $( find . -name craftbukkit*.jar ) nogui --nojline

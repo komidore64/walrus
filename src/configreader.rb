@@ -2,7 +2,7 @@
 
 require 'yaml'
 
-PROGRAM_NAME = File.basename($PROGRAM_NAME)
+PROGRAM_NAME = File.basename(__FILE__)
 PROGRAM_LOCATION = File.expand_path(File.dirname(__FILE__))
 
 def help str

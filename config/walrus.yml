@@ -1,7 +1,8 @@
 # walrus.yml
 
-# location of this walrus instance
-walrus_dir: '/home/komidore64/workspace/walrus'
+# set the system user that walrus will use to launch the craftbukkit
+# server and send commands
+walrus_user: "komidore64"
 
 # permanent download link to get the latest craftbukkit jar
 craftbukkit_dl_link: 'http://dl.bukkit.org/downloads/craftbukkit/get/latest-rb/craftbukkit.jar'
@@ -11,3 +12,17 @@ autoupdate_jar: true
 
 # should walrus automatically create backups of the world?
 autobackup: true
+
+# how much memory should craftbukkit have allocated to it when the
+# server is started (in megabytes)
+#
+# recommended minimum is atleast 1024 megabytes
+craftbukkit_starting_memory: 1024
+
+# the maximum amount of memory that the craftbukkit server is
+# allowed to use (in megabytes)
+#
+# should be set above starting memory
+#
+# recommended: 2048 megabytes
+craftbukkit_maximum_memory: 4096

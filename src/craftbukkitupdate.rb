@@ -9,7 +9,7 @@ PROGRAM_LOCATION = File.expand_path(File.dirname(__FILE__))
 config_option = 'autoupdate_jar'
 
 # check to see if auto-updating is allowed in walrus.yml
-if `#{PROGRAM_LOCATION}/configreader.rb find #{config_option}` == 'false'
+if `#{PROGRAM_LOCATION}/configreader.rb find #{config_option}`.strip! == 'false'
   puts "Configuration option [ #{config_option} ] set to 'false'"
   puts "exiting..."
   exit 0
@@ -27,7 +27,7 @@ request = Net::HTTP::Get.new(perm_uri.request_uri)
 response = session.request(request)
 data = {:url => response["Location"], :filename => response["Location"].split("/").last}
 puts "DONE"
-#===============================================================================
+# ==============================================================================
 
 # look for a local craftbukkit.jar
 current_jar_fname = craftbukkit_location.entries.grep(/^craftbukkit-.*\.jar/).first || ""
