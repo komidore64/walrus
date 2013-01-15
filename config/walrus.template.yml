@@ -17,7 +17,7 @@ autobackup: true
 # server is started (in megabytes)
 #
 # recommended minimum is atleast 1024 megabytes
-craftbukkit_starting_memory: 1024
+craftbukkit_minimum_memory: 1024
 
 # the maximum amount of memory that the craftbukkit server is
 # allowed to use (in megabytes)

@@ -10,4 +10,4 @@ MAX_MEM=$( $SCRIPT_LOCATION/configreader.rb find craftbukkit_maximum_memory )
 MIN_MEM=$( $SCRIPT_LOCATION/configreader.rb find craftbukkit_minimum_memory )
 
 pushd $CRAFTBUKKIT_LOCATION > /dev/null 2>&1
-java -Xmx$MAX_MEM -Xms$MIN_MEM -jar $( find . -name craftbukkit*.jar ) nogui --nojline
+java -Xmx"$MAX_MEM"M -Xms"$MIN_MEM"M -jar $( find . -name craftbukkit*.jar ) nogui --nojline
