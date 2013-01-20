@@ -7,7 +7,7 @@ PROGRAM_LOCATION = File.expand_path(File.dirname(__FILE__))
 config_option = 'autobackup'
 
 # make sure config file allows backing up
-if `#{PROGRAM_LOCATION}/configreader.rb find #{config_option}`.strip! == 'false'
+if `#{PROGRAM_LOCATION}/readconfig.rb find #{config_option}`.strip! == 'false'
   puts "Configuration has [ #{config_option} ] set to 'false'"
   puts "exiting..."
   exit

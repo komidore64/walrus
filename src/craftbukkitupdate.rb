@@ -9,7 +9,7 @@ PROGRAM_LOCATION = File.expand_path(File.dirname(__FILE__))
 config_option = 'autoupdate_jar'
 
 # check to see if auto-updating is allowed in walrus.yml
-if `#{PROGRAM_LOCATION}/configreader.rb find #{config_option}`.strip! == 'false'
+if `#{PROGRAM_LOCATION}/readconfig.rb find #{config_option}`.strip! == 'false'
   puts "Configuration option [ #{config_option} ] set to 'false'"
   puts "exiting..."
   exit 0
@@ -19,7 +19,7 @@ craftbukkit_location = Dir.new("#{PROGRAM_LOCATION}/../lib")
 
 # get craftbukkit meta-data (filename, perm-url) ===============================
 print "downloading craftbukkit jar meta-data..."
-perm_uri = URI(`#{PROGRAM_LOCATION}/configreader.rb find craftbukkit_dl_link`)
+perm_uri = URI(`#{PROGRAM_LOCATION}/readconfig.rb find craftbukkit_dl_link`.strip!)
 
 session = Net::HTTP.new(perm_uri.host)
 request = Net::HTTP::Get.new(perm_uri.request_uri)
@@ -45,6 +45,7 @@ if (data[:filename] <=> current_jar_fname) > 0 # string comparison
 
   data[:bin] = response.body
 
+  # delete the current local jar if it exists
   unless current_jar_fname.empty?
     craftbukkit_jar_path = "#{craftbukkit_location.path}/#{current_jar_fname}"
     File.delete(craftbukkit_jar_path)
