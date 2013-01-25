@@ -26,3 +26,14 @@ craftbukkit_minimum_memory: 1024
 #
 # recommended: 2048 megabytes
 craftbukkit_maximum_memory: 2048
+
+# a temporary location where overviewer copies the minecraft
+# world so that it can parse and render the world. if the
+# directory does not exist, it will be created, and then
+# deleted upon successful render
+overviewer_temporary_dir: '/tmp/overviewer'
+
+# overviewer's output directory is where the web files
+# will be placed once the minecraft world parsing is
+# done
+overviewer_output_dir: '/var/www/html'
