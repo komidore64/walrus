@@ -10,6 +10,14 @@ As a big fan of Minecraft, especially playing multiplayer with my friends, I qui
 
 The current state of the project is broken. Almost everything is hard-coded. First on my TODO list is to get it working and to be more portable.
 
+## getting started
+
+To contribute to `walrus`, fork this repository and then:
+
+1. `cp config/walrus.template.yml config/walrus.yml`
+2. `git submodule update --init`
+3. `python overviewer/setup.py build`
+
 ## overviewer
 
 I have [minecraft-overviewer](http://github.com/overviewer/Minecraft-Overviewer) in a submodule of this project because it's a really really cool project and I think it should be included with every craftbukkit server!
