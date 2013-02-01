@@ -16,7 +16,7 @@ To contribute to `walrus`, fork this repository and then:
 
 1. `cp config/walrus.template.yml config/walrus.yml`
 2. `git submodule update --init`
-3. `python overviewer/setup.py build`
+3. `cd overviewer/; python setup.py build`
 
 ## overviewer
 
