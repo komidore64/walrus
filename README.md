@@ -4,7 +4,7 @@ Command-line toolset for running a CraftBukkit server
 
 ## why?
 
-As a big fan of Minecraft, especially playing multiplayer with my friends, I quickly found it difficult to manage a Craftbukkit server instance on my home server. I turned to Screen, Cron, and Bash scripts. This is based on those scripts I first wrote with a unified command-line interface.
+As a big fan of Minecraft, especially playing multiplayer with my friends, I quickly found it difficult to manage a Craftbukkit server instance on my home server. I turned to Screen, Cron, and Bash scripts.
 
 ## project state
 
@@ -12,7 +12,7 @@ The project is in a working state. Everything should work except for overviewer.
 
 ## how to use walrus
 
-To use walrus to run your craftbukkit server, download the zip file and unzip it.
+To use walrus to run your craftbukkit server, download and unarchive the zip file . Since `walrus` is a command-line tool, I'm going to assume you have an intermediate knowledge of the terminal.
 
 ### configuration
 
@@ -26,7 +26,7 @@ First, go into the `config` directory and copy `walrus.template.yml` to `walrus.
 
 ### starting up
 
-To start walrus, go to the `src` directory and run `./start.sh`.  This fires off a detached `screen` session and runs the CraftBukkit server inside there. If you'd like to attach to it and give the server commands, run `screen -d -r minecraft`. To detach from the `screen` session, press `ctrl + a` then `d`.
+To start walrus, go to the `src` directory and run `./start.sh`. On first start-up, walrus goes out and downloads the latest CraftBukkit jar so you don't have to. `start.sh` fires off a detached `screen` session and runs the CraftBukkit server inside there. If you'd like to attach to it and give the server commands, run `screen -d -r minecraft`. To detach from the `screen` session, press `ctrl + a` then `d`.
 
 ### shutting down
 
