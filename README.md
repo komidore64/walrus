@@ -8,15 +8,29 @@ As a big fan of Minecraft, especially playing multiplayer with my friends, I qui
 
 ## project state
 
-The current state of the project is broken. Almost everything is hard-coded. First on my TODO list is to get it working and to be more portable.
+The project is in a working state. Everything should work except for overviewer.
 
-## getting started
+## how to use walrus
 
-To contribute to `walrus`, fork this repository and then:
+To use walrus to run your craftbukkit server, download the zip file and unzip it.
 
-1. `cp config/walrus.template.yml config/walrus.yml`
-2. `git submodule update --init`
-3. `cd overviewer/; python setup.py build`
+### configuration
+
+First, go into the `config` directory and copy `walrus.template.yml` to `walrus.yml`. This is `walrus`'s configuration file. you'll need to set a couple things in this file.
+
+1. set the user that will be running the `walrus` scripts
+2. choose whether or not you want `walrus` to auto-update to the newest craftbukkit.jar on each startup.
+3. unfortunately the scheduled backups don't work quite yet.
+4. set the minimum amount of RAM you want CraftBukkit to use
+5. set the maximum amount of RAM you want CraftBukkit to use
+
+### starting up
+
+To start walrus, go to the `src` directory and run `./start.sh`.  This fires off a detached `screen` session and runs the CraftBukkit server inside there. If you'd like to attach to it and give the server commands, run `screen -d -r minecraft`. To detach from the `screen` session, press `ctrl + a` then `d`.
+
+### shutting down
+
+When you're ready to shutdown the CraftBukkit server, run `./close-nicely.sh` which is located in the `src` directory.
 
 ## overviewer
 
@@ -25,6 +39,14 @@ I have [minecraft-overviewer](http://github.com/overviewer/Minecraft-Overviewer)
 ## help
 
 I'd love to get others involved in making a nice set of command-line tools. Make your own fork of `walrus` and submit your code with a pull-request.
+
+### getting started
+
+To contribute to `walrus`, fork this repository and then:
+
+1. `cp config/walrus.template.yml config/walrus.yml`
+2. `git submodule update --init`
+3. `cd overviewer/; python setup.py build`
 
 ## questions
 
