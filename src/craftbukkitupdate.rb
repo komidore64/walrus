@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
+#
+# TODO
+# - figure out a way to download past versions, specifiable via walrus.yml
 
 $stdout.sync = true
 
@@ -11,7 +14,6 @@ config_option = 'autoupdate_jar'
 # check to see if auto-updating is allowed in walrus.yml
 if `#{PROGRAM_LOCATION}/readconfig.rb find #{config_option}`.strip! == 'false'
   puts "Configuration option [ #{config_option} ] set to 'false'"
-  puts "exiting..."
   exit 0
 end
 
