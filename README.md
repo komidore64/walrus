@@ -6,10 +6,6 @@ Command-line toolset for running a CraftBukkit server
 
 As a big fan of Minecraft, especially playing multiplayer with my friends, I quickly found it cumbersome to manage a CraftBukkit server instance on my home server. I turned to Screen, Cron, and Bash scripts.
 
-## project state
-
-The project is in a working state.
-
 ## how to use `walrus`
 
 To use `walrus` to run a CraftBukkit server, download and unarchive the zip file . Since `walrus` is a command-line tool, I'm going to assume you have an intermediate knowledge of the terminal.
@@ -36,11 +32,13 @@ When you're ready to shutdown the CraftBukkit server, run `./close-nicely.sh` wh
 
 I have [Minecraft-Overviewer](http://github.com/overviewer/Minecraft-Overviewer) in a submodule of this project because it's a really really cool project and I think it should be included with every CraftBukkit server! It puts your Minecraft world into a GoogleMaps webpage!
 
-## help
+Before you can use Overviewer, you'll need to pull down the submodule with `git submodule update --init` and then `cd overviewer/; python setup.py build`. Make sure your overviewer-temporary and -output directories are set in `walrus.yml`, and you can run `src/overviewerparse.rb` to render your Minecraft world!
+
+## contributing
 
 I'd love to get others involved in making a nice set of command-line tools. Make your own fork of `walrus` and submit your code with a pull-request. Or if you'd like to use `walrus` that's great too! Please don't hesitate to give me feedback!
 
-### getting started
+### setting up to develop
 
 To contribute to `walrus`, fork this repository and then:
 
@@ -50,5 +48,4 @@ To contribute to `walrus`, fork this repository and then:
 
 ## questions
 
-
-If you have a question about anything related to `walrus`, or if I've made a mistake somewhere, please feel free to contact me via email or submit an [issue](https://github.com/komidore64/walrus/issues).
+If you have a question about anything related to `walrus`, please feel free to submit an [issue](https://github.com/komidore64/walrus/issues).
