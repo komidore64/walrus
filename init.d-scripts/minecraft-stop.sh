@@ -13,6 +13,6 @@
 SCRIPT_LOCATION="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" # bash hack to get the location of this script
 SOURCE_LOCATION=$SCRIPT_LOCATION/../src
 
-USER=$( $SOURCE_LOCATION/configreader.rb find walrus_user )
+USER=$( $SOURCE_LOCATION/readconfig.rb find walrus_user )
 
 su $USER -c "(cd $SOURCE_LOCATION; ./close-nicely.sh;)"
